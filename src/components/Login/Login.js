@@ -16,12 +16,13 @@ function Login() {
           <form>
             <div className="form-group text-start mb-3">
               <label className="fw-bold mb-2" for="email">Email</label>
-              <input type="email" name="email" id="email" className="form-control p-3" placeholder="Enter your email" aria-describedby="helpId" />
+              <input required type="email" name="email" id="email" className="form-control p-3" placeholder="Enter your email" aria-describedby="helpId" />
             </div>
             
             <div className="form-group text-start mb-3">
               <label className="fw-bold mb-2" for="password">Password</label>
               <input
+                required
                 type="password"
                 name="password"
                 id="password"

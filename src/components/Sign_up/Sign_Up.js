@@ -31,7 +31,7 @@ function Sign_Up() {
             
             <div className="form-group text-start mb-3">
                 <label className="fw-bold mb-2" for="phone">Phone</label>
-                <input type="tel" name="phone" id="phone" required className="form-control p-3" placeholder="Enter your phone number" aria-describedby="helpId" />
+                <input pattern="\d{10}" type="tel" name="phone" id="phone" required className="form-control p-3" placeholder="Enter your phone number" aria-describedby="helpId" />
             </div>
 
             <div className="form-group text-start mb-3">
@@ -42,6 +42,7 @@ function Sign_Up() {
             <div className="form-group text-start mb-3">
               <label className="fw-bold mb-2" for="password">Password</label>
               <input
+                minLength="8"
                 type="password"
                 name="password"
                 id="password"
