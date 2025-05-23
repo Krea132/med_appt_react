@@ -1,7 +1,7 @@
 import React from "react";
-import "./Sign_Ups.css";
+import "./Sign_Up.css";
 
-function Sign_Ups() {
+function Sign_Up() {
   return (
     <div>
     <div className="container-xl pt-5">
@@ -64,5 +64,5 @@ function Sign_Ups() {
   );
 }
 
-export default Sign_Ups;
+export default Sign_Up;
 

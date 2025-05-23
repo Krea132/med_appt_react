@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import logo from '../../logo.svg';
 import "./Navbar.css";
 
@@ -14,7 +15,7 @@ function Navbar() {
 
           <ul className="nav__links active m-0">
             <li className="link">
-              <a href="../Landing_Page/LandingPage.html">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li className="link">
               <a href="#">Appointments</a>
@@ -26,14 +27,10 @@ function Navbar() {
               <a href="#">Reviews</a>
             </li>
             <li className="btn1">
-              <a href="../Sign_Up//Sign_Up.html">
-                Sign Up
-              </a>
+              <Link to="/signup">Sign Up</Link>
             </li>
             <li className="btn1">
-              <a href="../Login/Login.html">
-                Login
-              </a>
+              <Link to="/login">Login</Link>
             </li>
           </ul>
         </div>   

@@ -4,6 +4,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
+import Sign_Up from './components/Sign_up/Sign_Up';
+import Login from './components/Login/Login';
+import Landing_Page from './components/Landing_Page/Landing_Page';
 
 
 function App() {
@@ -11,8 +14,14 @@ function App() {
     <div className="App">
     <BrowserRouter>
       <Navbar />
+      
       {/* Set up the Routes for different pages */}
           <Routes>
+            
+            <Route path="/" element={<Landing_Page/>}/>
+            <Route path="/signup" element={<Sign_Up />} />
+            <Route path="/login" element={<Login />} />
+
             {/* Define individual Route components for different pages */}
           </Routes>
     </BrowserRouter>
