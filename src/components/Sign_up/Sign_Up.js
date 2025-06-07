@@ -73,22 +73,35 @@ const Sign_Up = () => {
             
             <div className="form-group text-start mb-3">
                 <label className="fw-bold mb-2" for="name">Name</label>
-                <input type="text" name="name" id="name" required className="form-control p-3" placeholder="Enter your name" aria-describedby="helpId" />
+                <input 
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  type="text" name="name" id="name" required className="form-control p-3" placeholder="Enter your name" aria-describedby="helpId" 
+                />
             </div>
             
             <div className="form-group text-start mb-3">
                 <label className="fw-bold mb-2" for="phone">Phone</label>
-                <input pattern="\d{10}" type="tel" name="phone" id="phone" required className="form-control p-3" placeholder="Enter your phone number" aria-describedby="helpId" />
+                <input 
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  pattern="\d{10}" type="tel" name="phone" id="phone" required className="form-control p-3" placeholder="Enter your phone number" aria-describedby="helpId" 
+                />
             </div>
 
             <div className="form-group text-start mb-3">
               <label className="fw-bold mb-2" for="email">Email</label>
-              <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" type="email" name="email" id="email" className="form-control p-3" placeholder="Enter your email" aria-describedby="helpId" />
+              <input
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" type="email" name="email" id="email" className="form-control p-3" placeholder="Enter your email" aria-describedby="helpId" />
             </div>
             
             <div className="form-group text-start mb-3">
               <label className="fw-bold mb-2" for="password">Password</label>
               <input
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 minLength="8"
                 type="password"
                 name="password"
@@ -100,8 +113,7 @@ const Sign_Up = () => {
             </div>
 
             <div className="d-grid gap-3 mb-3">
-              <button type="submit" className="btn btn-primary mr-1 p-2">Login</button> 
-              <button type="reset" className="btn btn-danger p-2">Reset</button>
+              <button type="submit" className="btn btn-primary mr-1 p-2">Sign Up</button> 
             </div>
 
           </form>

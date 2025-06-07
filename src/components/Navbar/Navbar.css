@@ -46,7 +46,8 @@
 }
 
 /* Buttons */
-.btn1 a{
+.btn1{
+    margin: 0;
     border: 1px solid #E80320;
     color:#333;
     background-color: white;
@@ -55,7 +56,7 @@
     text-decoration: none;
 }
 
-.btn1 a:hover {
+.btn1:hover {
     background-color: #E80320;
     color: white;
 }

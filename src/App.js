@@ -3,10 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
-import Sign_Up from './components/Sign_up/Sign_Up';
-import Login from './components/Login/Login';
-import Landing_Page from './components/Landing_Page/Landing_Page';
+import Navbar from "./Components/Navbar/Navbar";
+import Sign_Up from './Components/Sign_up/Sign_Up';
+import Login from './Components/Login/Login';
+import Landing_Page from './Components/Landing_Page/Landing_Page';
 
 
 function App() {
