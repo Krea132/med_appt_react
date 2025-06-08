@@ -59,7 +59,7 @@ const Login = () => {
           <h2 className="fw-bold">Login</h2>
 
           <p>
-            Are you a new member? <a href="../Sign_Up/Sign_Up.html" className="text-decoration-none" style={{color: "#E80320"}}> Sign Up Here</a>
+            Are you a new member? <a to="Sign_Up" className="text-decoration-none" style={{color: "#E80320"}}> Sign Up Here</a>
           </p>
           
           <form onSubmit={login}>
@@ -90,7 +90,7 @@ const Login = () => {
               <button type="submit" className="btn btn-primary mr-1 p-2">Login</button> 
               <button type="reset" className="btn btn-danger p-2">Reset</button>
             </div>
-            <a href="../Sign_Up/Sign_Up.html" className="text-decoration-none" style={{color: "#E80320"}}>Forgot Password?</a>
+            <a to="Sign_Up" className="text-decoration-none" style={{color: "#E80320"}}>Forgot Password?</a>
             
           </form>
 
