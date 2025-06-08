@@ -6,6 +6,7 @@ import { API_URL } from '../../config';
 // Function component for Sign Up form
 const Sign_Up = () => {
     // State variables using useState hook
+    const [role, setRole] = useState('');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
@@ -26,6 +27,7 @@ const Sign_Up = () => {
                 email: email,
                 password: password,
                 phone: phone,
+                role: role
             }),
         });
         const json = await response.json(); // Parse the response JSON
@@ -40,10 +42,10 @@ const Sign_Up = () => {
             window.location.reload(); // Refresh the page
         } else {
             if (json.errors) {
-                for (const error of json.errors) {
-                    setShowerr(error.msg); // Show error messages
-                }
-            } else {
+              const messages = json.errors.map((error) => error.msg).join(', ');
+              setShowerr(messages);
+            }
+            else {
                 setShowerr(json.error);
             }
         }
@@ -57,14 +59,23 @@ const Sign_Up = () => {
           <h2 className="fw-bold">Sign Up</h2>
 
           <p>
-            Already a member? <a href="../Login/Login.html" className="text-decoration-none" style={{color: "#E80320"}}> Login</a>
+            Already a member? <a to="/login" className="text-decoration-none" style={{color: "#E80320"}}> Login</a>
           </p>
           
-          <form>
+          {showerr && (
+            <div className="alert alert-danger text-start" role="alert">
+              {showerr}
+            </div>
+          )}
+
+          <form onSubmit={register}>
             
             <div className="form-group text-start mb-3">
                 <label className="fw-bold mb-2" for="role">Role</label>
-                <select type="text" name="role" id="role" required className="form-select p-3" aria-describedby="helpId">
+                <select 
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                  type="text" name="role" id="role" required className="form-select p-3" aria-describedby="helpId">
                     <option selected>Select your role</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>   

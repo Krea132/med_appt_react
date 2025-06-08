@@ -37,11 +37,11 @@ function Navbar() {
       setShowDropdown(!showDropdown);
     }
     useEffect(() => { 
-      sessionStorage.setItem("email", "Michael@ejemplo.com");
+      // sessionStorage.setItem("email", "Michael@ejemplo.com");
       const storedEmail = sessionStorage.getItem("email");
 
       if (storedEmail) {
-            setIsLoggedIn(true);
+             setIsLoggedIn(true);
             setUsername(storedEmail);
             
             // Extraer la parte antes de la @
