@@ -37,9 +37,18 @@ Make sure you have Node.js installed. Then run:
 npm install
 ```
 
-### 3. Start the Development Server
+### 3. Start backend MongoDB
 
-Once the installation is complete, start the app:
+Once the installation is complete, start Backend:
+
+```bash
+cd server
+node index
+```
+
+### 4. Start the Development Server
+
+Once backend has started, start the app:
 
 ```bash
 npm start
