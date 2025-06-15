@@ -35,6 +35,7 @@ Make sure you have Node.js installed. Then run:
 
 ```bash
 npm install
+npm i reactjs-popup
 ```
 
 ### 3. Start backend MongoDB
