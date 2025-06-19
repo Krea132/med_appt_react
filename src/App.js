@@ -7,6 +7,7 @@ import Navbar from "./Components/Navbar/Navbar";
 import Sign_Up from './Components/Sign_up/Sign_Up';
 import Login from './Components/Login/Login';
 import Landing_Page from './Components/Landing_Page/Landing_Page';
+import InstantConsultation from './Components/InstantConsultation/InstantConsultation';
 
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
             
             <Route path="/" element={<Landing_Page/>}/>
             <Route path="/signup" element={<Sign_Up />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login />} /> 
+            <Route path="/instant-consultation" element={<InstantConsultation />} /> 
 
             {/* Define individual Route components for different pages */}
           </Routes>
