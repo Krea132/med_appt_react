@@ -80,16 +80,16 @@ function Navbar() {
                   <span className="username">Hola, {username}</span>
                 </li>
                 <li>
-                  <button className="btn1" onClick={handleLogout}>Logout</button>
+                  <button className="btn btn-outline-danger rounded-pill px-4 py-2" onClick={handleLogout}>Logout</button>
                 </li>
               </>
               ) : (
               <>
                 <li>
-                  <Link className="btn1" to="/signup">Sign Up</Link>
+                  <Link className="btn btn-outline-danger rounded-pill px-4 py-2" to="/signup">Sign Up</Link>
                 </li>
                 <li>
-                  <Link className="btn1" to="/login">Login</Link>
+                  <Link className="btn btn-outline-danger rounded-pill px-4 py-2" to="/login">Login</Link>
                 </li>
               </>
             )}

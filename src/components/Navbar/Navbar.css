@@ -44,19 +44,6 @@
 .link a:hover {
     color: #E80320;
 }
-
-/* Buttons */
-.btn1{
-    margin: 0;
-    border: 1px solid #E80320;
-    color:#333;
-    background-color: white;
-    border-radius: 50px;
-    padding:8px 32px;
-    text-decoration: none;
-}
-
-.btn1:hover {
-    background-color: #E80320;
-    color: white;
+.btn-outline-danger{
+  color: #333333;
 }

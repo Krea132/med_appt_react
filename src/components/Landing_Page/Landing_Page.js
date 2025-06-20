@@ -25,8 +25,8 @@ function Landing_Page() {
               <h4>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque at quae ducimus. Suscipit omnis quibusdam non cum rem voluptatem! 
               </h4>
-              <a href="#services">
-                <button className="button mb-5">Get Started</button>
+              <a className="btn btn-primary mb-5 btn-lg px-4" href="#services">
+                Get Started
               </a>
                 
           </div>

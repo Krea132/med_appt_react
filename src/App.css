@@ -37,3 +37,20 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+/* Buttons */
+.btn-primary{
+  background-color: #00549D;
+}
+.btn-danger {
+    background-color: #E80320;
+}
+.btn-outline-danger{
+  border-color: #E80320;
+}
+.btn-outline-danger:hover {
+    background-color: #E80320;
+    color: white;
+}
