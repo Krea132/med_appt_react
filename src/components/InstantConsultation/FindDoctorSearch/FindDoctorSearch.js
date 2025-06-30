@@ -19,8 +19,8 @@ const FindDoctorSearch = () => {
         window.location.reload();
     }
     return (
-        <div className='finddoctor bg-light text-start p-4 mb-5' style={{'max-width':'480px'}}>
-            <h1 className='mt-0 mb-3 fw-bold h2' style={{'line-height':'1.3lh'}}>Find a doctor at your own ease</h1>
+        <div className='finddoctor bg-light text-start p-4 mb-5' style={{'maxWidth':'480px'}}>
+            <h1 className='mt-0 mb-3 fw-bold h2' style={{'lineHeight':'1.3lh'}}>Find a doctor at your own ease</h1>
             <img className='w-100 mb-3' src="/search.jpg" alt="Descripción de la imagen" />
             <div className="home-search-container">
                 <div className="doctor-search-box">
@@ -32,7 +32,7 @@ const FindDoctorSearch = () => {
                         </svg>
                     </div>
 
-                    <div style={{'border-color':'#cccccc'}} className="search-doctor-input-results" hidden={doctorResultHidden}>
+                    <div style={{'borderColor':'#cccccc'}} className="search-doctor-input-results" hidden={doctorResultHidden}>
                         {
                             specialities.map(speciality => <div className="search-doctor-result-item" key={speciality} onMouseDown={() => handleDoctorSelect(speciality)}>
                                 <span>
