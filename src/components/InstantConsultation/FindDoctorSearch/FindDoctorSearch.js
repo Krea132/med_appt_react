@@ -15,8 +15,7 @@ const FindDoctorSearch = () => {
     const handleDoctorSelect = (speciality) => {
         setSearchDoctor(speciality);
         setDoctorResultHidden(true);
-        navigate(`/instant-consultation?speciality=${speciality}`);
-        window.location.reload();
+        navigate(`/BookingConsultation?speciality=${encodeURIComponent(speciality)}`);
     }
     return (
         <div className='finddoctor bg-light text-start p-4 mb-5' style={{'maxWidth':'480px'}}>

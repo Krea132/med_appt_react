@@ -63,7 +63,7 @@ function Navbar() {
               <Link to="/">Home</Link>
             </li>
             <li className="link">
-              <Link to="/instant-consultation">instant consultation</Link>
+              <Link to="BookingConsultation">Booking consultation</Link>
             </li>            
             <li className="link">
               <a href="#">Appointments</a>
