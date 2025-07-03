@@ -6,9 +6,20 @@ import AppointmentForm from '../AppointmentForm/AppointmentForm'
 import { v4 as uuidv4 } from 'uuid';
 
 
-const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
+const DoctorCard = ({ name, speciality, experience, ratings, profilePic, onAppointmentChange }) => {
   const [showModal, setShowModal] = useState(false);
   const [appointments, setAppointments] = useState([]);
+
+  useEffect(() => {
+    const storedAppointment = localStorage.getItem(name);
+    if (storedAppointment) {
+      const parsed = JSON.parse(storedAppointment);
+      setAppointments([{
+        id: uuidv4(), 
+        ...parsed
+      }]);
+    }
+  }, [name]);
 
   const handleBooking = () => {
     setShowModal(true);
@@ -17,15 +28,31 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
   const handleCancel = (appointmentId) => {
     const updatedAppointments = appointments.filter((appointment) => appointment.id !== appointmentId);
     setAppointments(updatedAppointments);
+    
+    // Elimina la reserva guardada en localStorage
+    localStorage.removeItem(name);
+    localStorage.removeItem("doctorData");
+
+    // Notifica a App que hubo un cambio (para que Notification se actualice)
+    if (onAppointmentChange) onAppointmentChange(); // <-- Añade esto
+
+    // Cierra el modal
+    setShowModal(false);
   };
 
   const handleFormSubmit = (appointmentData) => {
+
+    localStorage.setItem(appointmentData.doctorName, JSON.stringify(appointmentData));
+
     const newAppointment = {
       id: uuidv4(),
       ...appointmentData,
     };
     const updatedAppointments = [...appointments, newAppointment];
     setAppointments(updatedAppointments);
+    localStorage.setItem(name, JSON.stringify(newAppointment));
+    localStorage.setItem("doctorData", JSON.stringify({ name }));
+    if (onAppointmentChange) onAppointmentChange();
     setShowModal(false);
   };
 
@@ -84,9 +111,9 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
                     <h3>Appointment Booked!</h3>
                     {appointments.map((appointment) => (
                       <div className="bookedInfo" key={appointment.id}>
-                        <p>Name: <strong>{appointment.name}</strong></p>
-                        <p>Phone Number: <strong>{appointment.phoneNumber}</strong></p>
-                        <button className="btn btn-outline-danger p-2" onClick={() => handleCancel(appointment.id)}>Cancel Appointment</button>
+                        <p className='mb-1'>For: <strong>{appointment.patientName}</strong></p>
+                        <p>When: <strong>{appointment.dateAppointment},  at {appointment.selectedSlot}</strong></p>
+                        <button className="btn btn-outline-danger p-2" onClick={() => {handleCancel(appointment.id);close();}}>Cancel Appointment</button>
                       </div>
                     ))}
                     </div>

@@ -18,7 +18,7 @@ const FindDoctorSearch = () => {
         navigate(`/BookingConsultation?speciality=${encodeURIComponent(speciality)}`);
     }
     return (
-        <div className='finddoctor bg-light text-start p-4 mb-5' style={{'maxWidth':'480px'}}>
+        <div className='finddoctor bg-light mx-auto text-start p-4 mt-4 mb-5' style={{'maxWidth':'480px'}}>
             <h1 className='mt-0 mb-3 fw-bold h2' style={{'lineHeight':'1.3lh'}}>Find a doctor at your own ease</h1>
             <img className='w-100 mb-3' src="/search.jpg" alt="Descripción de la imagen" />
             <div className="home-search-container">

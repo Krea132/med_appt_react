@@ -5,7 +5,7 @@ import FindDoctorSearch from './InstantConsultation/FindDoctorSearch/FindDoctorS
 import DoctorCard from './InstantConsultation/DoctorCard/DoctorCard';
 
 
-const BookingConsultation = () => {
+const BookingConsultation = ({ onAppointmentChange }) => {
     const [searchParams] = useSearchParams();
     const [doctors, setDoctors] = useState([]);
     const [filteredDoctors, setFilteredDoctors] = useState([]);
@@ -60,28 +60,26 @@ const BookingConsultation = () => {
     }, [searchParams])
 
   return (
-        <center>
-            <div  className="searchpage-container">
-            <FindDoctorSearch onSearch={handleSearch} />
-            <div className="search-results-container">
-            {isSearched ? (
-                <center>
-                    <h2 className='fw-bold mb-2'>{filteredDoctors.length} doctors are available {searchParams.get('location')}</h2>
-                    <p className='mb-5'>Book appointments with minimum wait-time & verified doctor details</p>
-                        <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3">
-                            {filteredDoctors.length > 0 ? (
-                                    filteredDoctors.map(doctor => <DoctorCard className="doctorcard" {...doctor} key={doctor.name} />)
-                            ) : (
-                            <div className='col'><p>No doctors found.</p></div>
-                            )}
-                        </div>
-                </center>
-                ) : (
-                ''
-                )}
-            </div>
+    <div className="container-xl h-100">
+        <FindDoctorSearch onSearch={handleSearch} />
+        <div className="search-results-container">
+        {isSearched ? (
+            <center>
+                <h2 className='fw-bold mb-2'>{filteredDoctors.length} doctors are available {searchParams.get('location')}</h2>
+                <p className='mb-5'>Book appointments with minimum wait-time & verified doctor details</p>
+                    <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3">
+                        {filteredDoctors.length > 0 ? (
+                                filteredDoctors.map(doctor => <DoctorCard className="doctorcard" {...doctor} key={doctor.name} onAppointmentChange={onAppointmentChange} />)
+                        ) : (
+                        <div className='col'><p>No doctors found.</p></div>
+                        )}
+                    </div>
+            </center>
+            ) : (
+            ''
+            )}
         </div>
-        </center>
+    </div>
   );
 };
 

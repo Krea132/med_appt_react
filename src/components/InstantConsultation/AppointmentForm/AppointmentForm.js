@@ -12,9 +12,31 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit }) => {
   
     const handleFormSubmit = (e) => {
       e.preventDefault();
-      onSubmit({ name, phoneNumber });
+
+
+      // Creamos objeto con los datos del formulario + doctor
+      const appointmentDetails = {
+        patientName: name,
+        phoneNumber,
+        dateAppointment,
+        selectedSlot,
+        doctorName,
+        doctorSpeciality
+      };
+
+      // Guardamos en localStorage usando el nombre del doctor como clave
+      localStorage.setItem(doctorName, JSON.stringify(appointmentDetails));
+
+      // Si hay un callback para manejar la reserva, lo llamamos
+      if (onSubmit) {
+        onSubmit(appointmentDetails);
+      }
+
+      // Limpiar campos
       setName('');
       setPhoneNumber('');
+      setDateAppointment('');
+      setSelectedSlot('');
     };
   
     return (
@@ -59,9 +81,9 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit }) => {
             value={selectedSlot}
             onChange={(e) => handleSlotSelection(e.target.value)}>
             <option selected>Select a time slot</option>
-            <option value="1">08:00</option>
-            <option value="2">09:45</option>
-            <option value="3">11:15</option>
+            <option value="08:00">08:00</option>
+            <option value="09:45">09:45</option>
+            <option value="11:15">11:15</option>
           </select>
         </div>
         <button className="btn btn-primary btn-lg w-100 mr-1 p-2" type="submit">Book Now</button>

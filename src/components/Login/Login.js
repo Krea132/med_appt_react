@@ -52,9 +52,8 @@ const Login = () => {
   };
 
   return (
-    <div>
-    <div className="container-xl pt-5">
-        <div className="login-form bg-light mx-auto mb-5 p-3 text-center rounded" style={{"max-width": "510px"}}>
+    <div className="container-xl h-100 pt-5 d-flex flex-columnn align-items-center">
+        <div className="login-form bg-light mx-auto mb-5 p-3 text-center rounded w-100" style={{"max-width": "510px"}}>
           
           <h2 className="fw-bold">Login</h2>
 
@@ -96,7 +95,6 @@ const Login = () => {
 
         </div>
       </div>
-    </div>
   );
 }
 

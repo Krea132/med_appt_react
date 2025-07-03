@@ -4,7 +4,7 @@ import "./Landing_Page.css";
 
 function Landing_Page() {
   return (
-    <div>
+    <div className="container-xl h-100 py-5 d-flex flex-columnn align-items-center">
     <section className="hero-section">
         <div>
           <div data-aos="fade-up" className="flex-hero">

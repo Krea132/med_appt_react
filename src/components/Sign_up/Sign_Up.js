@@ -52,9 +52,8 @@ const Sign_Up = () => {
     };
     // JSX to render the Sign Up form
   return (
-    <div>
-    <div className="container-xl pt-5">
-        <div className="login-form bg-light mx-auto mb-5 p-3 text-center rounded" style={{"max-width": "510px"}}>
+    <div className="container-xl h-100 pt-5 d-flex flex-columnn align-items-center">
+        <div className="login-form w-100 bg-light mx-auto mb-5 p-3 text-center rounded" style={{"max-width": "510px"}}>
           
           <h2 className="fw-bold">Sign Up</h2>
 
@@ -131,7 +130,6 @@ const Sign_Up = () => {
 
         </div>
       </div>
-    </div>
   );
 }
 
