@@ -71,11 +71,11 @@ function Navbar() {
             <li className="link">
               <a href="#">Health Blog</a>
             </li>
-            <li className="link">
-              <Link to="reviewForm">Reviews</Link>
-            </li>
             {isLoggedIn ? (
               <>
+                <li className="link">
+                  <Link to="reviewForm">Reviews</Link>
+                </li>
                 <li className="link">
                   <span className="username">Hola, {username}</span>
                 </li>
