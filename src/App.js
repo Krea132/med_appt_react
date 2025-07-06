@@ -21,6 +21,8 @@ function App() {
         <Navbar />
 
         <Notification appointmentUpdated={appointmentUpdated} />
+        
+        {/* <GiveReviews /> */}
 
         <Routes>
           <Route path="/" element={<Landing_Page />} />
