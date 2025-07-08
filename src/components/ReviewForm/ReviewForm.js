@@ -39,17 +39,30 @@ const ReviewForm = () => {
         index === self.findIndex((d) => d.name === item.name)
     );
 
+    // Guarda los doctores con citas pasadas en el estado.
     setAppointments(uniqueAppointments);
-    setReviews(
-      uniqueAppointments.map(() => ({
-        submitted: false,
-        formData: {
-          name: '',
-          review: '',
-          rating: ''
-        }
-      }))
-    );
+
+    // cargar posibles reviews guardadas
+    const loadedReviews = uniqueAppointments.map((doc) => {
+      const saved = localStorage.getItem(`review-${doc.name}`);
+      if (saved) {
+        return {
+          submitted: true,
+          formData: JSON.parse(saved)
+        };
+      } else {
+        return {
+          submitted: false,
+          formData: {
+            name: '',
+            review: '',
+            rating: ''
+          }
+        };
+      }
+    });
+
+    setReviews(loadedReviews);
   }, []);
 
   const handleInputChange = (index, e) => {
@@ -58,25 +71,23 @@ const ReviewForm = () => {
     setReviews(updated);
   };
 
-const handleSubmit = (index, close) => {
-  const updated = [...reviews];
-  const form = updated[index].formData;
+  const handleSubmit = (index, close) => {
+    const updated = [...reviews];
+    const form = updated[index].formData;
 
-  if (!form.name || !form.review || !form.rating) {
-    alert("Please fill out all fields and select a rating.");
-    return;
-  }
+    if (!form.name || !form.review || !form.rating) {
+      alert("Please fill out all fields and select a rating.");
+      return;
+    }
 
-  // Marcar como enviada
-  updated[index].submitted = true;
-  setReviews(updated);
+    updated[index].submitted = true;
+    setReviews(updated);
 
-  // Guardar en localStorage
-  const doctorKey = appointments[index].name;
-  localStorage.setItem(`review-${doctorKey}`, JSON.stringify(form));
+    const doctorKey = appointments[index].name;
+    localStorage.setItem(`review-${doctorKey}`, JSON.stringify(form));
 
-  close();
-};
+    close();
+  };
 
   return (
     <div className='container-xl py-4 h-100"'>
@@ -84,7 +95,7 @@ const handleSubmit = (index, close) => {
       {appointments.length === 0 ? (
         <div className='bg-light rounded p-4'>
           <h2>No past appointments found:</h2>
-          <p>You must be loged in and have past appointments in order to be able to make a review.</p>
+          <p>You must be logged in and have past appointments in order to be able to make a review.</p>
         </div>
       ) : (
         <table className="table mx-auto mb-5">
@@ -110,9 +121,9 @@ const handleSubmit = (index, close) => {
                     trigger={
                       <button
                         className="btn btn-primary"
-                        disabled={reviews[index].submitted}
+                        disabled={reviews[index]?.submitted}
                       >
-                        {reviews[index].submitted ? "Review Submitted" : "Give Review"}
+                        {reviews[index]?.submitted ? "Review Submitted" : "Give Review"}
                       </button>
                     }
                   >
@@ -130,7 +141,7 @@ const handleSubmit = (index, close) => {
                             <input
                               type="text"
                               name="name"
-                              value={reviews[index].formData.name}
+                              value={reviews[index]?.formData.name || ''}
                               onChange={(e) => handleInputChange(index, e)}
                               className="form-control"
                               required
@@ -140,7 +151,7 @@ const handleSubmit = (index, close) => {
                             <label className="form-label">Your Review</label>
                             <textarea
                               name="review"
-                              value={reviews[index].formData.review}
+                              value={reviews[index]?.formData.review || ''}
                               onChange={(e) => handleInputChange(index, e)}
                               className="form-control"
                               required
@@ -150,7 +161,7 @@ const handleSubmit = (index, close) => {
                             <label className="form-label">Rating</label>
                             <select
                               name="rating"
-                              value={reviews[index].formData.rating}
+                              value={reviews[index]?.formData.rating || ''}
                               onChange={(e) => handleInputChange(index, e)}
                               className="form-select"
                               required
@@ -170,7 +181,7 @@ const handleSubmit = (index, close) => {
                   </Popup>
                 </td>
                 <td>
-                  {reviews[index].submitted && (
+                  {reviews[index]?.submitted && (
                     <div className="text-start">
                       <p className="mb-1"><strong>{reviews[index].formData.name}</strong>: "{reviews[index].formData.review}"</p>
                       <p><strong>Rating:</strong> {reviews[index].formData.rating}/5</p>

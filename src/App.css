@@ -59,3 +59,9 @@ body{
     background-color: #E80320;
     color: white;
 }
+
+/* tables */
+table td,
+table th{
+  vertical-align: middle;
+}
