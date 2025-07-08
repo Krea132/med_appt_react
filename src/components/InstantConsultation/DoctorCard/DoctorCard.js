@@ -9,8 +9,13 @@ import { v4 as uuidv4 } from 'uuid';
 const DoctorCard = ({ name, speciality, experience, ratings, profilePic, onAppointmentChange }) => {
   const [showModal, setShowModal] = useState(false);
   const [appointments, setAppointments] = useState([]);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
+    const userEmail = sessionStorage.getItem('email');
+        // Actualiza el estado con el email encontrado (o con null si no hay)
+        setUser(userEmail); 
+    
     const storedAppointment = localStorage.getItem(name);
     if (storedAppointment) {
       const parsed = JSON.parse(storedAppointment);
@@ -58,7 +63,7 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, onAppoi
 
   return (
     <div className='col mb-4'>
-      <div className="card">
+      <div className="card h-100">
           <div className="ratio ratio-1x1">
             <img className='w-100 mb-3' src="/dr-image.jpg" alt="Descripción de la imagen" />
           {/* <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16"> <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/> </svg> */}
@@ -81,14 +86,28 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, onAppoi
         <div className="doctor-card-options-container">
         <Popup
             style={{ backgroundColor: '#FFFFFF' }}
+            disabled={!user}
             trigger={
-              <button style={{ 'border-top-left-radius': '0', 'border-top-right-radius': '0'}} className={`stretched-link btn w-100 btn-primary rounded-bottom mr-1 p-2 ${appointments.length > 0 ? 'btn-danger' : ''}`}>
-                {appointments.length > 0 ? (
-                  <div>Cancel Appointment</div>
+              <button 
+              style={{ 'border-top-left-radius': '0', 'border-top-right-radius': '0'}} 
+              className={`stretched-link btn w-100 btn-primary rounded-bottom mr-1 p-2 ${user && appointments.length > 0 ? 'btn-danger py-4' : ''}`}
+              disabled={!user}
+              >
+           {
+                !user ? (
+                    // Estado 1: Usuario no logueado
+                    <div>Log in to book</div>
+                ) : appointments.length > 0 ? (
+                    // Estado 2: Usuario logueado y con reserva
+                    <div>Cancel Appointment</div>
                 ) : (
-                  <div>Book Appointment</div>
-                )}
-                <div>No Booking Fee</div>
+                    // Estado 3: Usuario logueado y sin reserva
+                    <div>
+                      <p className='mb-2'>Book Appointment</p>
+                      <p className='m-0'>No Booking Fee</p>
+                    </div>
+                )
+            }
               </button>
             }
             modal
