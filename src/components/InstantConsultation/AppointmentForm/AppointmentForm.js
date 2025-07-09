@@ -4,7 +4,9 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit }) => {
     const [name, setName] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [dateAppointment, setDateAppointment] = useState('');
-    const [selectedSlot, setSelectedSlot] = useState(null);
+    const [selectedSlot, setSelectedSlot] = useState('');
+    const userEmail = sessionStorage.getItem("email");
+
   
     const handleSlotSelection = (slot) => {
       setSelectedSlot(slot);
@@ -14,25 +16,26 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit }) => {
       e.preventDefault();
 
 
-      // Creamos objeto con los datos del formulario + doctor
+      // Create object with form + doctor data
       const appointmentDetails = {
         patientName: name,
         phoneNumber,
         dateAppointment,
         selectedSlot,
         doctorName,
-        doctorSpeciality
+        doctorSpeciality,
+        email: userEmail
       };
 
-      // Guardamos en localStorage usando el nombre del doctor como clave
+      // Save in localStorage using doctor's name as key
       localStorage.setItem(doctorName, JSON.stringify(appointmentDetails));
 
-      // Si hay un callback para manejar la reserva, lo llamamos
+      // If a callback exists to handle the booking, call it
       if (onSubmit) {
         onSubmit(appointmentDetails);
       }
 
-      // Limpiar campos
+      // Clear form fields
       setName('');
       setPhoneNumber('');
       setDateAppointment('');
@@ -76,11 +79,11 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit }) => {
         </div>
         <div className="form-group mb-3">
           <label className="fw-bold mb-2" htmlFor="timeSlot">Book Time Slot:</label>
-          <select id='timeSlot' class="form-select p-3"
+          <select id='timeSlot' className="form-select p-3"
             required
             value={selectedSlot}
             onChange={(e) => handleSlotSelection(e.target.value)}>
-            <option selected>Select a time slot</option>
+            <option value="" disabled>Select a time slot</option>
             <option value="08:00">08:00</option>
             <option value="09:45">09:45</option>
             <option value="11:15">11:15</option>

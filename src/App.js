@@ -13,16 +13,19 @@ import Notification from './Components/Notification/Notification';
 
 
 function App() {
-  const [appointmentUpdated, setAppointmentUpdated] = useState(false);
+  const [appointmentUpdated, setAppointmentUpdated] = useState(0);
+
+  const handleAppointmentChange = () => {
+    const timestamp = Date.now();
+    setAppointmentUpdated(timestamp);
+  };
 
   return (
     <div className="App">
       <BrowserRouter>
         <Navbar />
-
-        <Notification appointmentUpdated={appointmentUpdated} />
         
-        {/* <GiveReviews /> */}
+        <Notification appointmentUpdated={appointmentUpdated} />
 
         <Routes>
           <Route path="/" element={<Landing_Page />} />
@@ -33,9 +36,9 @@ function App() {
 
           <Route
             path="/BookingConsultation"
-            element={<BookingConsultation onAppointmentChange={() => setAppointmentUpdated(prev => !prev)} />}
+            element={<BookingConsultation onAppointmentChange={handleAppointmentChange} />}
           />
-          <Route path="/notifications" element={<Notification appointmentUpdated={appointmentUpdated} />} />
+
         </Routes>
       </BrowserRouter>
     </div>

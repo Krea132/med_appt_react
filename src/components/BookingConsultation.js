@@ -16,7 +16,6 @@ const BookingConsultation = ({ onAppointmentChange }) => {
         .then(res => res.json())
         .then(data => {
             if (searchParams.get('speciality')) {
-                // window.reload()
                 const filtered = data.filter(doctor => doctor.speciality.toLowerCase() === searchParams.get('speciality').toLowerCase());
 
                 setFilteredDoctors(filtered);
@@ -40,7 +39,6 @@ const BookingConsultation = ({ onAppointmentChange }) => {
                 
             const filtered = doctors.filter(
                 (doctor) =>
-                // 
                 doctor.speciality.toLowerCase().includes(searchText.toLowerCase())
                 
             );
@@ -53,10 +51,6 @@ const BookingConsultation = ({ onAppointmentChange }) => {
     const navigate = useNavigate();
     useEffect(() => {
         getDoctorsDetails();
-        // const authtoken = sessionStorage.getItem("auth-token");
-        // if (!authtoken) {
-        //     navigate("/login");
-        // }
     }, [searchParams])
 
   return (
