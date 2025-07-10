@@ -60,11 +60,20 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, onAppoi
     setShowModal(false);
   };
 
+  const getImageIdFromName = (name, max = 100) => {
+    let hash = 0;
+    for (let i = 0; i < name.length; i++) {
+      hash = name.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    return Math.abs(hash % max) + 1; // para evitar 0
+  };
+
+
   return (
     <div className='col mb-4'>
       <div className="card h-100">
           <div className="ratio ratio-1x1">
-            <img className='w-100 mb-3' src="/dr-image.jpg" alt="Descripción de la imagen" />
+            <img className='w-100 mb-3' src={`https://picsum.dev/image/${getImageIdFromName(name)}/view`} alt={`Profile of ${name}`} />
           </div>
           <div className="card-body">
             <h4 className="fw-bold">{name}</h4>
@@ -105,7 +114,7 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, onAppoi
             {(close) => (
               <div className="doctorbg p-4">
                 <div className="text-center mb-5 pt-3">
-                  <img className='mx-auto display-block mb-3' style={{'maxHeight':'150px'}} src="/dr-image.jpg" alt="Descripción de la imagen" />
+                  <img className='mx-auto display-block mb-3' style={{'maxHeight':'150px'}} src={`https://picsum.dev/image/${getImageIdFromName(name)}/view`} alt={`Profile of ${name}`} />
                   <h4 className="fw-bold">{name}</h4>
                   <div className="mb-1">{speciality}</div>
                   <div style={{'color':'#888888'}} className="mb-2 fw-bold">{experience} years experience</div>
