@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -10,6 +11,7 @@ import ReviewForm from './Components/ReviewForm/ReviewForm';
 import Landing_Page from './Components/Landing_Page/Landing_Page';
 import BookingConsultation from './Components/BookingConsultation';
 import Notification from './Components/Notification/Notification';
+import ProfileCard from './Components/ProfileCard/ProfileCard';
 
 
 function App() {
@@ -38,6 +40,8 @@ function App() {
             path="/BookingConsultation"
             element={<BookingConsultation onAppointmentChange={handleAppointmentChange} />}
           />
+
+          <Route path="/ProfileCard" element={<ProfileCard />} />
 
         </Routes>
       </BrowserRouter>

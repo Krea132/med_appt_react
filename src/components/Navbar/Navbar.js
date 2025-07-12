@@ -50,7 +50,6 @@ function Navbar() {
           }
     }, []);
   return (
-    <div>
     <nav className="main-header shadow-sm">
         <div className="container d-flex justify-content-between">
           <a className="nav__logo" href="/">
@@ -77,7 +76,15 @@ function Navbar() {
                   <Link to="reviewForm">Reviews</Link>
                 </li>
                 <li className="link">
-                  <span className="username">Hola, {username}</span>
+                  {/* <span className="username">Hola, {username}</span> */}
+                  <div className="dropdown">
+                    <button className="btn btn-outline-danger rounded-pill px-4 py-2 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      Hola, {username}
+                    </button>
+                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li><Link className="dropdown-item" to="ProfileCard">Your Profile</Link></li>
+                    </ul>
+                  </div>
                 </li>
                 <li>
                   <button className="btn btn-outline-danger rounded-pill px-4 py-2" onClick={handleLogout}>Logout</button>
@@ -96,7 +103,6 @@ function Navbar() {
           </ul>
         </div>   
     </nav>
-    </div>
   );
 };
 
