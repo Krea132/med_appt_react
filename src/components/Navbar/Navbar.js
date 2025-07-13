@@ -83,6 +83,7 @@ function Navbar() {
                     </button>
                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                       <li><Link className="dropdown-item" to="ProfileCard">Your Profile</Link></li>
+                      <li><Link className="dropdown-item" to="ReportsLayout">Your Reports</Link></li>
                     </ul>
                   </div>
                 </li>

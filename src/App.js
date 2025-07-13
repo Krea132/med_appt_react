@@ -12,6 +12,7 @@ import Landing_Page from './Components/Landing_Page/Landing_Page';
 import BookingConsultation from './Components/BookingConsultation';
 import Notification from './Components/Notification/Notification';
 import ProfileCard from './Components/ProfileCard/ProfileCard';
+import ReportsLayout from './Components/ReportsLayout/ReportsLayout';
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
           />
 
           <Route path="/ProfileCard" element={<ProfileCard />} />
+          <Route path="/ReportsLayout" element={<ReportsLayout />} />
 
         </Routes>
       </BrowserRouter>
