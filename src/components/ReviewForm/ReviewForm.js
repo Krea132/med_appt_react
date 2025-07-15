@@ -101,10 +101,10 @@ const ReviewForm = () => {
         <table className="table mx-auto mb-5">
           <thead>
             <tr>
-              <th className='text-center' scope="col">S.No.</th>
-              <th scope="col">Doctor Name</th>
+              <th className='text-center' scope="col" style={{ width: '58px' }}>S.No.</th>
+              <th scope="col" style={{ width: '200px' }}>Doctor Name</th>
               <th scope="col">Doctor Speciality</th>
-              <th scope="col">Provide Review</th>
+              <th scope="col" style={{ width: '200px' }}>Provide Review</th>
               <th scope="col">Review Given</th>
             </tr>
           </thead>
@@ -123,6 +123,7 @@ const ReviewForm = () => {
                         className="btn btn-primary"
                         disabled={reviews[index]?.submitted}
                       >
+                        {reviews[index]?.submitted ? "" : <i className="bi bi-pencil me-2"></i>}
                         {reviews[index]?.submitted ? "Review Submitted" : "Give Review"}
                       </button>
                     }
@@ -184,7 +185,7 @@ const ReviewForm = () => {
                   {reviews[index]?.submitted && (
                     <div className="text-start">
                       <p className="mb-1"><strong>{reviews[index].formData.name}</strong>: "{reviews[index].formData.review}"</p>
-                      <p><strong>Rating:</strong> {reviews[index].formData.rating}/5</p>
+                      <p className="mb-0"><strong>Rating:</strong> {reviews[index].formData.rating}/5</p>
                     </div>
                   )}
                 </td>

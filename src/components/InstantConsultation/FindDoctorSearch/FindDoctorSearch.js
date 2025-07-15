@@ -26,18 +26,14 @@ const FindDoctorSearch = () => {
 
                     <div className='position-relative w-100'>
                         <input type="text" className="form-control w-100 py-3 pe-5" placeholder="Search doctors, clinics, hospitals, etc." onFocus={() => setDoctorResultHidden(false)} onBlur={() => setDoctorResultHidden(true)} value={searchDoctor} onChange={(e) => setSearchDoctor(e.target.value)} />
-                        <svg style={{'top':'19px','right':'14px'}} className='bi bi-search position-absolute' xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                        </svg>
+                        <i style={{'top':'19px','right':'14px'}} className='bi bi-search position-absolute'></i>
                     </div>
 
                     <div style={{'borderColor':'#cccccc'}} className="search-doctor-input-results" hidden={doctorResultHidden}>
                         {
                             specialities.map(speciality => <div className="search-doctor-result-item" key={speciality} onMouseDown={() => handleDoctorSelect(speciality)}>
                                 <span>
-                                    <svg className='bi bi-search' xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                                    </svg>
+                                    <i class="bi bi-search"></i>
                                 </span>
                                 <span>{speciality}</span>
                                 <span>SPECIALITY</span>
