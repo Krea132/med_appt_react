@@ -5,15 +5,15 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./Components/Navbar/Navbar";
-import Sign_Up from './Components/Sign_up/Sign_Up';
-import Login from './Components/Login/Login';
-import ReviewForm from './Components/ReviewForm/ReviewForm';
-import Landing_Page from './Components/Landing_Page/Landing_Page';
-import BookingConsultation from './Components/BookingConsultation';
-import Notification from './Components/Notification/Notification';
-import ProfileCard from './Components/ProfileCard/ProfileCard';
-import ReportsLayout from './Components/ReportsLayout/ReportsLayout';
+import Navbar from "./components/Navbar/Navbar";
+import Sign_Up from './components/Sign_up/Sign_Up';
+import Login from './components/Login/Login';
+import ReviewForm from './components/ReviewForm/ReviewForm';
+import Landing_Page from './components/Landing_Page/Landing_Page';
+import BookingConsultation from './components/BookingConsultation';
+import Notification from './components/Notification/Notification';
+import ProfileCard from './components/ProfileCard/ProfileCard';
+import ReportsLayout from './components/ReportsLayout/ReportsLayout';
 
 
 function App() {
