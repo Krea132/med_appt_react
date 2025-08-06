@@ -1,6 +1,8 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin'); // instead of UglifyJsPlugin
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
   mode: 'production', 
@@ -45,6 +47,10 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({ filename: 'styles.css' }),
+    new HtmlWebpackPlugin({
+      template: './public/index.html', // Ajusta si tu plantilla está en otro sitio
+      filename: 'index.html'
+    }),
   ],
   optimization: {
     minimize: true,
