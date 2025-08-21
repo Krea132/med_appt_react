@@ -7,7 +7,8 @@ const path = require('path');
 
 
 app.set('view engine','ejs')
-app.use(express.static('public'))
+//app.use(express.static('public'))
+app.use(express.static('build'))
 
 const PORT = process.env.PORT || 8181;
 
@@ -24,11 +25,17 @@ app.use('/api/auth', require('./routes/auth'));
 
 app.use(express.static(path.join(__dirname, 'build')));
 
+// Put lower -- Catch all --
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
+// app.get('/', (req, res) => {
+//     res.send('Hello World!');
+// });
+
+// The catch-all route must be at the very end
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-app.get('/', (req, res) => {
-    res.send('Hello World!');
 });
 
 

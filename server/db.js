@@ -1,11 +1,15 @@
 const mongoose = require('mongoose');
-const mongoURI =  "mongodb://localhost:27017/med_appt";
+// const mongoURI =  "mongodb://localhost:27017/med_appt";
+
+// Use the environment variable, with a fallback for local development
+const mongoURL = process.env.MONGO_URL || "mongodb://localhost:27017/med_appt";
+
 
 const connectToMongo = async (retryCount) => {
     const MAX_RETRIES = 3;
     const count = retryCount ?? 0;
     try {
-        await mongoose.connect(mongoURI, { dbName: 'stayhealthybeta1'});
+        await mongoose.connect(mongoURL, { dbName: 'stayhealthybeta1'});
         console.info('Connected to Mongo Successfully')
 
         return;
