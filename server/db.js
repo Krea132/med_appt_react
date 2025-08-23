@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 // cloud edit
 // Every time that you start the MongoDB service, a new password in generated. You will need to update the db.js file with the latest password.
-const mongoURI =  "mongodb://root:oxwTKOYqAYVaOypgpZWFQFIP@127.0.0.1:27017";
+const mongoURL =  "mongodb://root:ZB0VvGj3WNZHH3jHJzdDDtmp@172.21.13.121:27017";
 
 
 const connectToMongo = async (retryCount) => {
