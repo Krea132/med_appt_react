@@ -1,13 +1,7 @@
 const mongoose = require('mongoose');
 
-// local edit
-// Use the environment variable, with a fallback for local development
-// const mongoURL = process.env.MONGO_URL || "mongodb://localhost:27017/med_appt";
-
-// cloud edit
-// Every time that you start the MongoDB service, a new password in generated. You will need to update the db.js file with the latest password.
-const mongoURL =  "mongodb://root:ZB0VvGj3WNZHH3jHJzdDDtmp@172.21.13.121:27017";
-
+// Usa la variable de entorno MONGO_URL, o localhost como fallback
+const mongoURL = process.env.MONGO_URL || "mongodb://localhost:27017/med_appt";
 
 const connectToMongo = async (retryCount) => {
     const MAX_RETRIES = 3;
