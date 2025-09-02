@@ -8,9 +8,9 @@ const path = require('path');
 
 app.set('view engine','ejs')
 //app.use(express.static('public'))
-app.use(express.static('build'))
+//app.use(express.static('build'))
 
-const PORT = process.env.PORT || 8181;
+const PORT = process.env.PORT || 3000;
 
 
 // Middleware
