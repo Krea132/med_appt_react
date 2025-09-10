@@ -73,7 +73,7 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, onAppoi
     <div className='col mb-4'>
       <div className="card h-100">
           <div className="ratio ratio-1x1">
-            <img className='w-100 mb-3' src={`https://picsum.dev/image/${getImageIdFromName(name)}/view`} alt={`Profile of ${name}`} />
+            <img className='w-100 mb-3'src="/dr1.jpg" alt={`Profile of ${name}`} />
           </div>
           <div className="card-body">
             <h4 className="fw-bold">{name}</h4>
