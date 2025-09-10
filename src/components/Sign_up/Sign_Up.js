@@ -91,7 +91,7 @@ const Sign_Up = () => {
             </div>
             
             <div className="form-group text-start mb-3">
-                <label className="fw-bold mb-2" for="phone">Phone</label>
+                <label className="fw-bold mb-2" for="phone">Phone (10 digits)</label>
                 <input 
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
